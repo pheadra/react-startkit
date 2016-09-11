@@ -1,13 +1,19 @@
 /**
- * Created by jungenpark on 5/2/16.
+ * Created by luke.park on 9/11/16.
  */
 import debug from 'debug'
 const log = debug('application:userReducer')
 
-import Immutable from 'immutable'
+import Immutable, { fromJS } from 'immutable'
 import AppConstants from '../constants/AppConstants'
 
-export default function userReducer(state = Immutable.Map({'isLogin' : false}), action) {
+
+// Initial routing state
+const routeInitialState = fromJS({
+  isLogin: false,
+})
+
+export default function userReducer(state = routeInitialState), action) {
   switch(action.type) {
     case AppConstants.USER_LOGIN :
       return Immutable.fromJS(action.user).set('isLogin', true)

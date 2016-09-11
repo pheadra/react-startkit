@@ -24,6 +24,7 @@ export default keyMirror({
   JOIN_FAIL:null,
   JOIN_SUCCESS: null,
 
+  // POPUP
   OPEN_POPUP: null,
   CLOSE_POPUP: null,
   CLOSE_ALL_POPUP: null

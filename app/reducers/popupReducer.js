@@ -1,5 +1,5 @@
 /**
- * Created by jungenpark on 5/2/16.
+ * Created by luke.park on 9/11/16.
  */
 import debug from 'debug'
 const log = debug('application:popupReducer')
