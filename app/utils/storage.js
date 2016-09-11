@@ -1,8 +1,8 @@
 /**
- * Created by luke on 9/9/15.
+ * Created by luke on 9/11/16.
  */
 // 로컬 스토리지 사용시 브라우저 호환하지 않으면 polyfill로 메모리에 저장함.
-
+// 특정 모바일 브라우저와 시큐리티 모드 일때 로컬 스토리지 지원하지 않음.
 
 const __storage = (function selectStorage() {
   try {
