@@ -20,7 +20,7 @@ module.exports = {
 	module : {
 		preLoaders: [],
 	 	loaders: [
-	    	{ 	test: /\.js$/, loader: 'babel', exclude: /node_modules/ },
+	    	{ 	test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
 	    	{   test: /\.css$/, loader: ExtractTextPlugin.extract({fallbackLoader:'style', loader:'css?sourceMap!postcss'}) },
 	    	{   test: /\.(svg|woff|ttf|eot|otf)/, loader: 'file'	},
 	    	{   test: /\.(png|jpg|jpeg|gif)$/, loader: 'file'	}
@@ -38,12 +38,27 @@ module.exports = {
     },
 	plugins: [
 		new Clean([ 'public' ]),
+		new webpack.ProvidePlugin({
+	      // make fetch available
+	      fetch: 'exports?self.fetch!whatwg-fetch',
+	    }),
 		new ExtractTextPlugin('style.css'),
 		new HtmlWebpackPlugin({
-	        title: 'KAKAO DSP',
-	        template:  'app/assets/index.html', // Load a custom template
-	        inject:'body'
-	      }),
+	        template:'app/assets/index.html', // Load a custom template
+	        minify: {
+		      removeComments: true,
+		      collapseWhitespace: true,
+		      removeRedundantAttributes: true,
+		      useShortDoctype: true,
+		      removeEmptyAttributes: true,
+		      removeStyleLinkTypeAttributes: true,
+		      keepClosingSlash: true,
+		      minifyJS: true,
+		      minifyCSS: true,
+		      minifyURLs: true,
+		    },
+		    inject: true,
+	    }),
 		new webpack.LoaderOptionsPlugin({
 	      minimize: true,
 	      debug: false
@@ -55,9 +70,16 @@ module.exports = {
 	      output: {
 	        comments: false
 	      },
-	      sourceMap: false
+	      sourceMap: true
+	    }),
+	    new webpack.DefinePlugin({
+	      'process.env': { 
+	      	NODE_ENV: JSON.stringify(process.env.NODE_ENV) 
+	      }
 	    })
 	],
 	devtool : 'source-map',
-	target: 'web'
+	target: 'web',
+	stats: false,
+  	progress: true
 }

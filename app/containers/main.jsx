@@ -20,9 +20,9 @@ export default class Main extends React.Component {
     log('main render')
     return (
       <article id="main">
-        <Link to="test">Home</Link>
+        <Link to="test">Home!!!!</Link>
         {/*<Banner />*/}
-        main
+        maindfs
       </article>
     )
   }

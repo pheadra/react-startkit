@@ -1,22 +1,23 @@
 /**
- * Created by pheadra on 7/8/15.
+ * Created by luke.park on 9/11/16.
  */
 import React from 'react'
 
 import debug from 'debug'
 const log = debug('application:app.jsx')
 
+import Header from '../components/Header'
+import Menu from '../components/Menu'
 
-/*
-import ga from 'react-google-analytics'
-var GAInitiailizer = ga.Initializer
-*/
+import Popup from '../components/Popup'
+
+import DevTools from '../components/DevTools'
+
+//http://stackoverflow.com/questions/29481961/react-router-google-tag-manager
+//import ga from 'react-google-analytics'
+//let GAInitiailizer = ga.Initializer
+
 export default class App extends React.Component {
-  constructor(props) {
-    super(props)
-
-  }
-
   componentDidMount() {
     log('did mount app')
 
@@ -27,9 +28,16 @@ export default class App extends React.Component {
   render() {
     return (
       <section>
+        <Header />
+        <Menu />
         {this.props.children}
+        <DevTools />
+        <Popup>
+          {/*Popup Components*/}
+        </Popup>
+       {/*<GAInitiailizer />*/}
       </section>
     )
   }
-  //<GAInitiailizer />
+
 }

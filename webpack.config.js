@@ -20,10 +20,17 @@ module.exports = {
 	module : {
 	 	preLoaders: [],
 	 	loaders: [
-	    	{ 	test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
-	    	{   test: /\.css$/, loader: ExtractTextPlugin.extract({fallbackLoader:'style', loader:'css?sourceMap!postcss'}) },
-	    	{   test: /\.(svg|woff|ttf|eot|otf)/, loader: 'file'	},
-	    	{   test: /\.(png|jpg|jpeg|gif)$/, loader: 'file'	}
+	    	{ test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
+	    	{ test: /\.css$/, loader: ExtractTextPlugin.extract({fallbackLoader:'style', loader:'css?sourceMap!postcss'}) },
+	    	{ test: /\.(svg|woff|woff2|ttf|eot|otf)/, loader: 'file' },
+	    	{ test: /\.(jpg|png|gif)$/,
+      			loaders: [
+        			'file-loader',
+        			'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
+      			],
+   			},
+   			{ test: /\.json$/, loader: 'json-loader' },
+	    	{ test: /\.html$/, loader: 'html-loader' }
 	    ]
 	},
 	resolve : {
@@ -38,12 +45,36 @@ module.exports = {
     },
 	plugins: [
 		new Clean([ 'public' ]),
+		/* HMR시 업데이트 되는 파일 명을 알려주는 plugin*/
+		new webpack.NamedModulesPlugin(),
+		new webpack.ProvidePlugin({
+	      // make fetch available
+	      fetch: 'exports?self.fetch!whatwg-fetch',
+	    }),
 		new ExtractTextPlugin('style.css'),
 		new HtmlWebpackPlugin({
-	        title: 'KAKAO DSP',
-	        template:  'app/assets/index.html', // Load a custom template
-	        inject:'body'
-	      })
+	        template:'app/assets/index.html', // Load a custom template
+	        minify: {
+		      removeComments: true,
+		      collapseWhitespace: true,
+		      removeRedundantAttributes: true,
+		      useShortDoctype: true,
+		      removeEmptyAttributes: true,
+		      removeStyleLinkTypeAttributes: true,
+		      keepClosingSlash: true,
+		      minifyJS: true,
+		      minifyCSS: true,
+		      minifyURLs: true,
+		    },
+		    inject: true,
+	    }),
+	    new webpack.DefinePlugin({
+	      'process.env': { 
+	      	NODE_ENV: JSON.stringify(process.env.NODE_ENV) 
+	      }
+	    })
 	],
-	target: 'web'
+	target: 'web',
+	stats: true,
+  	progress: true
 };
