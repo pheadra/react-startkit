@@ -13,7 +13,7 @@ const routeInitialState = fromJS({
   isLogin: false,
 })
 
-export default function userReducer(state = routeInitialState), action) {
+export default function userReducer(state = routeInitialState, action) {
   switch(action.type) {
     case AppConstants.USER_LOGIN :
       return Immutable.fromJS(action.user).set('isLogin', true)
