@@ -10,18 +10,14 @@ let HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
 module.exports = {
-	entry : {
-		'app' : './app'
-	},
-	output : {
-	  path: __dirname + '/public',
-      filename: '[name].bundle.js'
-    },
+	entry : { },
+	output : { },
 	module : {
-	 	preLoaders: [],
+	 	preLoaders: [
+	 		{ test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
+	 	],
 	 	loaders: [
-	    	{ test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
-	    	{ test: /\.css$/, loader: ExtractTextPlugin.extract({fallbackLoader:'style', loader:'css?sourceMap!postcss'}) },
+	    	{ test: /\.css$/, loader: 'null' },
 	    	{ test: /\.(svg|woff|woff2|ttf|eot|otf)/, loader: 'file?name=public/fonts/[name].[ext]' },
 	    	{ test: /\.(jpg|png|gif)$/,
       			loaders: [
@@ -29,7 +25,7 @@ module.exports = {
         			'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
       			],
    			},
-   			{ test: /\.json$/, loader: 'json-loader' }
+   			{ test: /\.json$/, loader: 'null' }
 	    ]
 	},
 	resolve : {
@@ -51,29 +47,19 @@ module.exports = {
 	      fetch: 'exports?self.fetch!whatwg-fetch',
 	    }),
 		new ExtractTextPlugin('style.css'),
-		new HtmlWebpackPlugin({
-	        template:'app/assets/index.html', // Load a custom template
-	        minify: {
-		      removeComments: true,
-		      collapseWhitespace: true,
-		      removeRedundantAttributes: true,
-		      useShortDoctype: true,
-		      removeEmptyAttributes: true,
-		      removeStyleLinkTypeAttributes: true,
-		      keepClosingSlash: true,
-		      minifyJS: true,
-		      minifyCSS: true,
-		      minifyURLs: true,
-		    },
-		    inject: true,
-	    }),
-	    new webpack.DefinePlugin({
+		new webpack.DefinePlugin({
 	      'process.env': { 
 	      	NODE_ENV: JSON.stringify(process.env.NODE_ENV) 
 	      }
 	    })
 	],
+	externals: {
+      'react/addons'                   : true,
+      'react/lib/ExecutionEnvironment' : true,
+      'react/lib/ReactContext'         : 'window'
+    },
+	devtool : 'inline-source-map',
 	target: 'web',
-	stats: true,
-  	progress: true
+	stats: false,
+  	progress: false
 };

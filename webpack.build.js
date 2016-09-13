@@ -15,15 +15,21 @@ module.exports = {
 	},
 	output : {
 	  path: __dirname + '/public',
-      filename: '[name].bundle.js'
+      filename: '[name].[hash].js'
     },
 	module : {
 		preLoaders: [],
 	 	loaders: [
-	    	{ 	test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
-	    	{   test: /\.css$/, loader: ExtractTextPlugin.extract({fallbackLoader:'style', loader:'css?sourceMap!postcss'}) },
-	    	{   test: /\.(svg|woff|ttf|eot|otf)/, loader: 'file'	},
-	    	{   test: /\.(png|jpg|jpeg|gif)$/, loader: 'file'	}
+	    	{ test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
+	    	{ test: /\.css$/, loader: ExtractTextPlugin.extract({fallbackLoader:'style', loader:'css?sourceMap!postcss'}) },
+	    	{ test: /\.(svg|woff|woff2|ttf|eot|otf)/, loader: 'file?name=public/fonts/[name].[ext]'	},
+	    	{ test: /\.(jpg|png|gif)$/,
+      			loaders: [
+        			'file-loader',
+        			'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
+      			],
+   			},
+   			{ test: /\.json$/, loader: 'json-loader' }
 	    ]
 	},
 	resolve : {
@@ -42,7 +48,7 @@ module.exports = {
 	      // make fetch available
 	      fetch: 'exports?self.fetch!whatwg-fetch',
 	    }),
-		new ExtractTextPlugin('style.css'),
+		new ExtractTextPlugin('style.[hash].css'),
 		new HtmlWebpackPlugin({
 	        template:'app/assets/index.html', // Load a custom template
 	        minify: {
