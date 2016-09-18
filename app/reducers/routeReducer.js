@@ -4,18 +4,19 @@
  */
 
 import { LOCATION_CHANGE } from 'react-router-redux'
-import { fromJS } from 'immutable'
+import Immutable from 'immutable'
+import InitialState from './initialState'
 
 
 // Initial routing state
-const routeInitialState = fromJS({
-  locationBeforeTransitions: null
-})
+/*const routeInitialState = Immutable.fromJS({
+ locationBeforeTransitions: null
+ })*/
 
 /**
  * Merge route into the global application state
  */
-export default function routeReducer(state = routeInitialState, action) {
+export default function routeReducer(state = InitialState.route, action) {
   switch (action.type) {
     /* istanbul ignore next */
     case LOCATION_CHANGE:

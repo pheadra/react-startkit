@@ -4,10 +4,10 @@
 import debug from 'debug'
 const log = debug('application:popupReducer')
 
-import Immutable from 'immutable'
 import AppConstants from '../constants/AppConstants'
+import InitialState from './initialState'
 
-export default function popupReducer(state = Immutable.Map([]), action) {
+export default function popupReducer(state = InitialState.popup, action) {
   switch(action.type) {
     case AppConstants.OPEN_POPUP :
       return state.set(action.result.key, action.result.props || {})

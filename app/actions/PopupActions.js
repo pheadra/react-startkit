@@ -13,7 +13,7 @@ const PopupActions = {
   openPopup(key, props = {}) {
     return {
       type: AppConstants.OPEN_POPUP,
-      result: {key, props}
+      result: { key, props }
     }
   },
   /***
