@@ -28,7 +28,8 @@ module.exports = {
   },
   resolve: {
     root: [__dirname + '/app'],
-    extensions: ['', '.js', '.jsx', 'json']
+    extensions: ['', '.js', '.jsx'],
+    modulesDirectories: ['node_modules']
   },
   plugins: [
     new Clean(['public']),

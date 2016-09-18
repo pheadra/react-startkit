@@ -1,8 +1,6 @@
 'use strict'
 const webpack = require('webpack')
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
-
-const extractCSS = new ExtractTextPlugin('style.css')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const precss = require('precss')
 const Clean = require('clean-webpack-plugin')
@@ -23,22 +21,23 @@ module.exports = {
   module: {
     preLoaders: [],
     loaders: [
-      {test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract({fallbackLoader: 'style', loader: 'css?sourceMap!postcss'})},
-      {test: /\.(svg|woff|woff2|ttf|eot|otf)/, loader: 'file?name=public/fonts/[name].[ext]'},
+      { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
+      { test: /\.css$/, loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: 'css?sourceMap!postcss' }) },
+      { test: /\.(svg|woff|woff2|ttf|eot|otf)/, loader: 'file?name=public/fonts/[name].[ext]' },
       {
         test: /\.(jpg|png|gif)$/,
         loaders: [
           'file-loader',
-          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
-        ],
+          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+        ]
       },
-      {test: /\.json$/, loader: 'json-loader'}
+      { test: /\.json$/, loader: 'json-loader' }
     ]
   },
   resolve: {
     root: [__dirname + '/app'],
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    modulesDirectories: ['node_modules']
   },
   postcss: function () {
     return [autoprefixer({
@@ -50,7 +49,7 @@ module.exports = {
     new Clean(['public']),
     new webpack.ProvidePlugin({
       // make fetch available
-      fetch: 'exports?self.fetch!whatwg-fetch',
+      fetch: 'exports?self.fetch!whatwg-fetch'
     }),
     new ExtractTextPlugin('style.[hash].css'),
     new HtmlWebpackPlugin({
@@ -65,9 +64,9 @@ module.exports = {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true,
+        minifyURLs: true
       },
-      inject: true,
+      inject: true
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
