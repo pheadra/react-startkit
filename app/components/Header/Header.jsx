@@ -10,13 +10,15 @@ const log = debug('application:Header.jsx')
 
 export default class Header extends React.Component {
   render() {
-  	return (<header>
-  	header
-  	</header>)
+    return (
+      <header>
+        header
+      </header>
+    )
   }
 }
-
+/*
 Header.contextTypes = {
   router: React.PropTypes.object.isRequired,
   store: React.PropTypes.object.isRequired
-}
+}*/
