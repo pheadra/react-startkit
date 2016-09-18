@@ -36,7 +36,6 @@ module.exports = function karmaConfig(config) {
     // Configure code coverage reporter
     coverageReporter: {
       reporters: [
-        { type: 'lcov', subdir: 'lcov' },
         { type: 'html', subdir: 'html' },
         { type: 'text-summary' }
       ]

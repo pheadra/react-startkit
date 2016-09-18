@@ -1,7 +1,7 @@
 {
-  "name": "dsp-startkit",
+  "name": "react-startkit",
   "version": "1.0.0",
-  "description": "DSP frontend starter project",
+  "description": "react starter project",
   "main": "/app/index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production BABEL_ENV=production webpack --config webpack.build.js --bail -p",
@@ -10,7 +10,10 @@
     "lint:css": "stylelint ./app/**/*.css",
     "test": "cross-env NODE_ENV=test BABEL_ENV=test karma start",
     "test:live": "cross-env NODE_ENV=test BABEL_ENV=test karma start --auto-watch --no-single-run",
+    "test:clean": "rimraf coverage",
     "analyze": "cross-env NODE_ENV=production BABEL_ENV=production webpack --config webpack.build.js --profile --json > stats.json",
+    "analyze:clean": "rimraf stats.json",
+    "clean": "rimraf public && npm run test:clean && npm run analyze:clean",
     "start": "npm run dev"
   },
   "author": "luke.park",
@@ -52,7 +55,6 @@
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.1",
     "clean-webpack-plugin": "^0.1.10",
-    "coveralls": "^2.11.12",
     "cross-env": "^2.0.1",
     "css-loader": "^0.24.0",
     "enzyme": "^2.4.1",
@@ -86,6 +88,7 @@
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.0.11",
+    "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "stylelint": "^7.2.0",
     "stylelint-config-standard": "^13.0.0",
