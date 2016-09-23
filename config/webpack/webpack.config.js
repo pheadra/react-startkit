@@ -2,7 +2,7 @@
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-module.exports = require('./webpack.base')({
+module.exports = require('./webpack.base.js')({
   entry: {
     'app': './app/main.js'
   },

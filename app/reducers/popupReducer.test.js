@@ -48,7 +48,7 @@ describe('Popup Reducer', () => {
     expect(newState.has(key)).toEqual(false)
   })
 
-  it('should initialState POPUP test', () => {
+  it('should initialState POPUP testing', () => {
     // arrange
     const init = Immutable.Map({ POPUPTEST: {} })
     const key = 'POPUPTEST'

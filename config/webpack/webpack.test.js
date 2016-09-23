@@ -2,9 +2,9 @@
 const webpack = require('webpack')
 
 const debug = require('debug')('app:webpack:config')
-debug('Creating test configuration.')
+debug('Creating testing configuration.')
 
-module.exports = require('./webpack.base')({
+module.exports = require('./webpack.base.js')({
   entry: { },
   output: { },
   cssLoaders : 'null',

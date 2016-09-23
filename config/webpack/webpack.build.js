@@ -7,7 +7,7 @@ const debug = require('debug')('app:webpack:config')
 debug('Creating configuration.')
 
 
-module.exports = require('./webpack.base')({
+module.exports = require('./webpack.base.js')({
   entry: {
     'app': './app/main.js'
   },
