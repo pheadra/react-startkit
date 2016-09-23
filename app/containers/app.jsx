@@ -31,13 +31,21 @@ export default class App extends React.Component {
         <Header />
         <Menu />
         {this.props.children}
-        <DevTools />
+        {this.renderDevTools}
         <Popup>
           {/*Popup Components*/}
         </Popup>
        {/*<GAInitiailizer />*/}
       </section>
     )
+  }
+
+  get renderDevTools() {
+    if (process.env.NODE_ENV === 'production') {
+      return null
+    } else {
+      return <DevTools />
+    }
   }
 
 }

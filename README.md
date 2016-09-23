@@ -2,7 +2,7 @@ README
 
 ## Quick start
 
-1. Clone Project 
+1. Git Clone Project 
 1. npm install
 1. npm run
 
@@ -27,6 +27,7 @@ README
 1. redux-devtool
 1. redux-logger
 1. debug (logger)
+1. eslint, stylelint
 
 ## Test Features
 
