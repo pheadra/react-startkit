@@ -13,16 +13,10 @@ import Popup from '../components/Popup'
 
 import DevTools from '../components/DevTools'
 
-//http://stackoverflow.com/questions/29481961/react-router-google-tag-manager
-//import ga from 'react-google-analytics'
-//let GAInitiailizer = ga.Initializer
-
 export default class App extends React.Component {
   componentDidMount() {
     log('did mount app')
 
-    //var GA_TRACKING_CODE = 'UA-53731828-10'
-    //ga('create', GA_TRACKING_CODE, 'auto')
   }
 
   render() {
@@ -35,7 +29,6 @@ export default class App extends React.Component {
         <Popup>
           {/*Popup Components*/}
         </Popup>
-       {/*<GAInitiailizer />*/}
       </section>
     )
   }
