@@ -1851,6 +1851,10 @@ css-color-names@0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/css-color-names/-/css-color-names-0.0.4.tgz#808adc2e79cf84738069b646cb20ec27beb629e0"
 
+css-element-queries@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/css-element-queries/-/css-element-queries-0.3.2.tgz#535d80891b3af21395d005f19905fe5154b5ccff"
+
 css-loader@^0.26.0:
   version "0.26.0"
   resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-0.26.0.tgz#160d378f5b8e0fd4ff6daf4f3580e2219b33025f"
@@ -6608,6 +6612,13 @@ redux-logger@^2.7.4:
   resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-2.7.4.tgz#891e5d29e7f111d08b5781a237b9965b5858c7f8"
   dependencies:
     deep-diff "0.3.4"
+
+redux-slider-monitor@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/redux-slider-monitor/-/redux-slider-monitor-1.0.7.tgz#6ad06af012381d58edfd1cc0361c7e2c258b3940"
+  dependencies:
+    css-element-queries "^0.3.2"
+    redux-devtools-themes "^1.0.0"
 
 redux-thunk@^2.1.0:
   version "2.1.0"
