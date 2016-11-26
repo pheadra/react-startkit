@@ -2,7 +2,7 @@
  * Created by jungenpark on 5/2/16.
  */
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import assign from 'object-assign'
 
 import PopupActions from '../../actions/PopupActions'
