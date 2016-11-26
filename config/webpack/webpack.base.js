@@ -1,3 +1,7 @@
+/**
+ * Created by pheadra on 9/18/16.
+ */
+
 'use strict'
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -17,7 +21,7 @@ module.exports = (options) => ({
   output: options.output,
   module: {
     loaders: [
-      { test: /\.jsx?$/, loader: 'babel', exclude: /node_modules/ },
+      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.css$/, loader: options.cssLoaders },
       { test: /\.(svg|woff|woff2|ttf|eot|otf)/, loader: 'file?name=public/fonts/[name].[ext]' },
       {
@@ -48,6 +52,7 @@ module.exports = (options) => ({
     }),
     new ExtractTextPlugin('style.css'),
     new HtmlWebpackPlugin({
+      title: 'haru react starterkit',
       template: 'app/assets/index.html', // Load a custom template
       minify: {
         removeComments: true,

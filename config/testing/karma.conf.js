@@ -1,4 +1,8 @@
-var webpackConfig = require('../webpack/webpack.test.js')
+/**
+ * Created by pheadra on 9/18/16.
+ */
+
+const webpackConfig = require('../webpack/webpack.test.js')
 
 // Reference: http://karma-runner.github.io/0.12/config/configuration-file.html
 module.exports = function karmaConfig(config) {

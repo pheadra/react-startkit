@@ -1,3 +1,7 @@
+/**
+ * Created by pheadra on 9/18/16.
+ */
+
 'use strict'
 const webpack = require('webpack')
 
