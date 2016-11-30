@@ -4,6 +4,7 @@
 
 'use strict'
 const webpack = require('webpack')
+const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = require('./webpack.base.js')({
@@ -11,7 +12,7 @@ module.exports = require('./webpack.base.js')({
     'app': './app/main.js'
   },
   output: {
-    path: __dirname + '/public',
+    path: path.resolve(process.cwd(), 'public'),
     publicPath: '/',
     filename: '[name].bundle.js'
   },

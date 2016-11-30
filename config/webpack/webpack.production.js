@@ -4,8 +4,8 @@
 
 'use strict'
 const webpack = require('webpack')
+const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const Clean = require('clean-webpack-plugin')
 
 const debug = require('debug')('app:webpack:config')
 debug('Creating configuration.')
@@ -16,13 +16,12 @@ module.exports = require('./webpack.base.js')({
     'app': './app/main.js'
   },
   output: {
-    path: __dirname + '/public',
+    path: path.resolve(process.cwd(), 'public'),
     publicPath: '/',
     filename: '[name].[hash].js'
   },
   cssLoaders : ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap!postcss-loader' }),
   plugins: [
-    new Clean(['public']),
     new webpack.optimize.OccurrenceOrderPlugin(true),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
