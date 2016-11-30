@@ -3,7 +3,7 @@ README
 ## Quick start
 
 1. Git Clone Project 
-1. npm install
+1. npm install or yarn install
 1. npm run
 
 ## Script
