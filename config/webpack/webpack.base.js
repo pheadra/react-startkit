@@ -47,9 +47,10 @@ module.exports = (options) => ({
     /* HMR시 업데이트 되는 파일 명을 알려주는 plugin*/
     new webpack.NamedModulesPlugin(),
     new webpack.ProvidePlugin({
-      // make fetch available
-      fetch: 'exports?self.fetch!whatwg-fetch'
-    }),
+      Promise: 'imports-loader?this=>global!exports-loader?global.Promise!es6-promise',
+      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
+      React: 'react'
+    })
     new ExtractTextPlugin('style.css'),
     new HtmlWebpackPlugin({
       title: 'haru react starterkit',
