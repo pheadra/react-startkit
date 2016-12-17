@@ -17,10 +17,10 @@ module.exports = require('./webpack.base.js')({
     mainFields : undefined
   },
   externals: {
-    cheerio: 'window',
-    'react/addons'                   : 'true',
-    'react/lib/ExecutionEnvironment' : 'true',
-    'react/lib/ReactContext'         : 'window'
+    'cheerio': 'window',
+    'react/addons': 'react',
+    'react/lib/ExecutionEnvironment': 'react',
+    'react/lib/ReactContext': 'react',
   },
   devtool: 'cheap-module-source-map'
 })
