@@ -26,5 +26,8 @@ module.exports = require('./webpack.base.js')({
   externals: {
     'jquery': 'jquery'
   },
+  performance: {
+    hints: false
+  },
   devtool: 'cheap-module-eval-source-map'
 })

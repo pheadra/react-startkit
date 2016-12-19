@@ -37,6 +37,9 @@ module.exports = require('./webpack.base.js')({
   resolve : {
     mainFields : ['main', 'browser']
   },
+  performance: {
+    hints: true
+  },
   externals: { },
   devtool: 'source-map'
 })

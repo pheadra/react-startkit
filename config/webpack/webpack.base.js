@@ -90,6 +90,7 @@ module.exports = (options) => ({
       }
     })
   ]),
+  performance: options.performance,
   externals:options.externals,
   devtool: options.devtool,
   target: 'web',
