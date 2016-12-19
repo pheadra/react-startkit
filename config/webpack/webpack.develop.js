@@ -29,5 +29,5 @@ module.exports = require('./webpack.base.js')({
   performance: {
     hints: false
   },
-  devtool: 'cheap-module-eval-source-map'
+  devtool: 'cheap-module-source-map'
 })
